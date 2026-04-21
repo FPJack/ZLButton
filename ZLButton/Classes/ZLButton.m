@@ -844,7 +844,7 @@ static inline UIColor *__UIColorFromHexString(NSString *hexStr) {
         return self.widthEq(width).heightEq(height);
     };
 }
-- (ZLButton * _Nonnull (^)(ZLButton * _Nullable __autoreleasing * _Nullable))assignToPtr {
+- (ZLButton * _Nonnull (^)(ZLButton * _Nullable __autoreleasing * _Nullable))toPtr {
     return ^ZLButton*(ZLButton **ptr){
         if (ptr) *ptr = self;
         return self;

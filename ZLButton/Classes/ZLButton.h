@@ -177,7 +177,7 @@ typedef NS_ENUM(NSUInteger, ZLButtonContentAlignment) {
 ///赋值当前对象到一个指针上
 /// 例如：ZLButton *btn;
 ///  ZLButton.new.assignToPtr(&btn);
-@property (nonatomic, copy, readonly) ZLButton* (^assignToPtr)(ZLButton *_Nullable* _Nullable buttonPtr);
+@property (nonatomic, copy, readonly) ZLButton* (^toPtr)(ZLButton *_Nullable* _Nullable buttonPtr);
 
 ///layoutsubview 回调
 @property (nonatomic, copy) void (^layoutBlock)(ZLButton * button);
