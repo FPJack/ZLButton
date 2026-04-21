@@ -75,7 +75,7 @@ typedef NS_ENUM(NSUInteger, ZLButtonContentAlignment) {
 /// 是否启用弹性间距（图文之间弹性撑满），默认 NO
 /// 启用后 layoutSpacing 作为最小间距
 @property (nonatomic, assign) BOOL flexibleSpacing;
-- (instancetype)enableFlexibleSpacing; // 便捷方法，设置 flexibleSpacing = YES
+- (instancetype)flexSpacing; // 便捷方法，设置 flexibleSpacing = YES
 
 /// 内边距，默认 UIEdgeInsetsZero
 @property (nonatomic, assign) UIEdgeInsets layoutEdgeInsets;
@@ -180,16 +180,26 @@ typedef NS_ENUM(NSUInteger, ZLButtonContentAlignment) {
 @property (nonatomic, copy, readonly) ZLButton* (^widthEq)(CGFloat width);
 ///同时设置宽高
 @property (nonatomic, copy, readonly) ZLButton* (^sizeEq)(CGFloat width,CGFloat height);
+///贴紧父视图四边(参数布局)
+@property (nonatomic, copy, readonly) ZLButton* (^edgeTo)(CGFloat top,CGFloat leading, CGFloat bottom, CGFloat trailing);
+///贴紧父视图四边布局
+@property (nonatomic, copy, readonly) ZLButton* (^edgeZero)(void);
+
 
 ///赋值当前对象到一个指针上
 /// 例如：ZLButton *btn;
 ///  ZLButton.new.assignToPtr(&btn);
 @property (nonatomic, copy, readonly) ZLButton* (^toPtr)(ZLButton *_Nullable* _Nullable buttonPtr);
-
 ///layoutsubview 回调
 @property (nonatomic, copy) void (^layoutBlock)(ZLButton * button);
 ///dealloc回调
 @property (nonatomic, copy) void (^deallocBlock)(ZLButton * button);
 @end
+
+
+@interface UIView (ZLButton)
+@property (nonatomic,readonly)ZLButton *imgTextBtn;
+@end
+
 
 NS_ASSUME_NONNULL_END

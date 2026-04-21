@@ -129,6 +129,7 @@ static inline UIColor *__UIColorFromHexString(NSString *hexStr) {
     _imageOffset = UIOffsetZero;
     _titleOffset = UIOffsetZero;
     _needsRecalculate = YES;
+    [self setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
 }
 
 #pragma mark - Convenience Setters
@@ -139,9 +140,9 @@ static inline UIColor *__UIColorFromHexString(NSString *hexStr) {
 }
 - (UIImage *)imageWithObj:(id)image {
     UIImage *img = nil;
-    if ([img isKindOfClass:UIImage.class]) {
+    if ([image isKindOfClass:UIImage.class]) {
         img = image;
-    } else if ([img isKindOfClass:NSString.class]) {
+    } else if ([image isKindOfClass:NSString.class]) {
         img = [UIImage imageNamed:image];
     }
     return img;
@@ -335,7 +336,8 @@ static inline UIColor *__UIColorFromHexString(NSString *hexStr) {
 - (void)setFlexibleSpacing:(BOOL)flexibleSpacing {
     if (_flexibleSpacing != flexibleSpacing) { _flexibleSpacing = flexibleSpacing; [self _zl_markDirty]; }
 }
-- (instancetype)enableFlexibleSpacing {
+
+- (instancetype)flexSpacing{
     self.flexibleSpacing = YES;
     return self;
 }
@@ -860,6 +862,25 @@ static inline UIColor *__UIColorFromHexString(NSString *hexStr) {
         return self.widthEq(width).heightEq(height);
     };
 }
+- (ZLButton * _Nonnull (^)(CGFloat, CGFloat, CGFloat, CGFloat))edgeTo {
+    return ^(CGFloat top, CGFloat leading, CGFloat bottom, CGFloat trailing){
+        self.translatesAutoresizingMaskIntoConstraints = NO;
+        UIView *superview = self.superview;
+        if (!superview) return self;
+        [NSLayoutConstraint activateConstraints:@[
+            [self.topAnchor constraintEqualToAnchor:superview.topAnchor constant:top],
+            [self.leadingAnchor constraintEqualToAnchor:superview.leadingAnchor constant:leading],
+            [self.bottomAnchor constraintEqualToAnchor:superview.bottomAnchor constant:-bottom],
+            [self.trailingAnchor constraintEqualToAnchor:superview.trailingAnchor constant:-trailing],
+        ]];
+        return self;
+    };
+}
+- (ZLButton * _Nonnull (^)(void))edgeZero {
+    return ^ZLButton*(){
+        return self.edgeTo(0, 0, 0, 0);
+    };
+}
 - (ZLButton * _Nonnull (^)(ZLButton * _Nullable __autoreleasing * _Nullable))toPtr {
     return ^ZLButton*(ZLButton **ptr){
         if (ptr) *ptr = self;
@@ -869,5 +890,16 @@ static inline UIColor *__UIColorFromHexString(NSString *hexStr) {
 - (void)dealloc
 {
     if (self.deallocBlock) self.deallocBlock(self);
+}
+@end
+@implementation UIView (ZLButton)
+- (ZLButton *)imgTextBtn {
+    ZLButton *button = objc_getAssociatedObject(self, _cmd);
+    if (!button) {
+        button = ZLButton.horizontal;
+        [self addSubview:button];
+        objc_setAssociatedObject(self, _cmd, button, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    }
+    return button;
 }
 @end
