@@ -12,7 +12,7 @@
 		0AE1FFAA4390B36294D9A3C1E9A2D181 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26BC96F34E43FA0A3AE93B3C2C4595E5 /* XCTest.framework */; };
 		103861A2717170E63586648A22314542 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 628C84E1B1C8C62533F6490E59EE3263 /* PrivacyInfo.xcprivacy */; };
 		12C8FD3D06F867281B3C87497145DC65 /* FBSnapshotTestCase.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A2BA61D4552A8B597E5706EE43826F1 /* FBSnapshotTestCase.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		14A4A20F4BFA4E486D538F109FD7171C /* ZLPopView-ZLPopView in Resources */ = {isa = PBXBuildFile; fileRef = 7F053E914C57A22C719CE404834C4F06 /* ZLPopView-ZLPopView */; };
+		14A4A20F4BFA4E486D538F109FD7171C /* ZLPopView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7F053E914C57A22C719CE404834C4F06 /* ZLPopView.bundle */; };
 		201568B969551C5EB44EE063EBF43BB9 /* ZLStackViewBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = BB5F61D7DA4EA6BD96C2153EC6740735 /* ZLStackViewBuilder.m */; };
 		267AEE0BF1514767DD64B50559013EB3 /* FBSnapshotTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93535E9A584187E1200E522BDFBC5469 /* FBSnapshotTestController.m */; };
 		28CEDF77B539C0E5F6470647724F2B27 /* ZLButton-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB903B9445423BB4A065D49DC1D1A06 /* ZLButton-dummy.m */; };
@@ -111,29 +111,29 @@
 		1CD825B8E78E7C04A4484FBCC24CE98A /* Pods-ZLButton_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ZLButton_Tests-Info.plist"; sourceTree = "<group>"; };
 		1EEB73A075DA88521DA655C0A860C52B /* FBSnapshotTestCase.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = FBSnapshotTestCase.modulemap; sourceTree = "<group>"; };
 		204D0BAF3150D42B522465EFE1A25BA5 /* Pods-ZLButton_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ZLButton_Tests-dummy.m"; sourceTree = "<group>"; };
-		2300F99672DD0E7C199F4BE3630469C8 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		2300F99672DD0E7C199F4BE3630469C8 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		26BC96F34E43FA0A3AE93B3C2C4595E5 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		2B5F995CE37F558CE32128A788CEEB5B /* Pods-ZLButton_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ZLButton_Tests-umbrella.h"; sourceTree = "<group>"; };
 		2CFA5B3D14E1ADD9A4125263BED3861D /* ZLPopViewBuilder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ZLPopViewBuilder.h; path = ZLPopView/Classes/include/ZLPopViewBuilder.h; sourceTree = "<group>"; };
 		3162977D45CA55909F87DEC3B93024E9 /* Pods-ZLButton_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ZLButton_Example-Info.plist"; sourceTree = "<group>"; };
-		36F8C33BD8F436DDEA1015104B336A47 /* Pods-ZLButton_Tests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-ZLButton_Tests"; path = Pods_ZLButton_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		36F8C33BD8F436DDEA1015104B336A47 /* Pods_ZLButton_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZLButton_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D61BBB64F0CDDF9F3353C623FC69EA7 /* Pods-ZLButton_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ZLButton_Example.modulemap"; sourceTree = "<group>"; };
 		4138A0A13FF7F7B73435E87E54C56C18 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		45A8D6E6B4E21A37A635C4DB82D47E33 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		45A8D6E6B4E21A37A635C4DB82D47E33 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		4D3FBD54F3CD0C155793D2772D6240EC /* Pods-ZLButton_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZLButton_Example.release.xcconfig"; sourceTree = "<group>"; };
 		51C0F7D1E042B2F8CB3C1E5B092CF15D /* Pods-ZLButton_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ZLButton_Example-frameworks.sh"; sourceTree = "<group>"; };
 		566E25C8C000346F43868CFD6EE0119C /* UIImage+Snapshot.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Snapshot.m"; path = "FBSnapshotTestCase/Categories/UIImage+Snapshot.m"; sourceTree = "<group>"; };
 		56CB68C008AD1C822ADD1AAD32D23467 /* FBSnapshotTestCasePlatform.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSnapshotTestCasePlatform.h; path = FBSnapshotTestCase/FBSnapshotTestCasePlatform.h; sourceTree = "<group>"; };
 		596423D36FFF6B940633EE46B5B88D04 /* Pods-ZLButton_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZLButton_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		5AB05DDAD7418DD41F8595F963735E14 /* ZLButton.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ZLButton.m; path = ZLButton/Classes/ZLButton.m; sourceTree = "<group>"; };
-		5C4F31330DFA99D699E4BDC8C3573D73 /* FBSnapshotTestCase */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FBSnapshotTestCase; path = FBSnapshotTestCase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5CEEDBD9447D2F7F3F27005AE9CCB6F3 /* ZLPopView */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ZLPopView; path = ZLPopView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C4F31330DFA99D699E4BDC8C3573D73 /* FBSnapshotTestCase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FBSnapshotTestCase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5CEEDBD9447D2F7F3F27005AE9CCB6F3 /* ZLPopView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ZLPopView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DE1B1A40A03476C6C9E01FC8D7F37B1 /* ZLUICollectionView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ZLUICollectionView.m; path = ZLPopView/Classes/ZLUICollectionView.m; sourceTree = "<group>"; };
 		5E6B5E773973965C73BC40D4388B4C07 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		5F989D3D9081AC14E3A60D06D957EB39 /* UIApplication+StrictKeyWindow.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIApplication+StrictKeyWindow.m"; path = "FBSnapshotTestCase/Categories/UIApplication+StrictKeyWindow.m"; sourceTree = "<group>"; };
 		5FADD085878572CE5D157B04BFE7CCF2 /* ResourceBundle-ZLPopView-ZLPopView-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-ZLPopView-ZLPopView-Info.plist"; sourceTree = "<group>"; };
 		61A0C7354391D4C8652F82233A3AABC9 /* ZLPopBaseView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ZLPopBaseView.m; path = ZLPopView/Classes/ZLPopBaseView.m; sourceTree = "<group>"; };
-		628C84E1B1C8C62533F6490E59EE3263 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = ZLPopView/Resources/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		628C84E1B1C8C62533F6490E59EE3263 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = ZLPopView/Resources/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		6315CD0E5085B0A98CED275E34F55401 /* ZLStackViewBuilder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ZLStackViewBuilder.h; path = ZLPopView/Classes/include/ZLStackViewBuilder.h; sourceTree = "<group>"; };
 		64FE61F2D3C7398C2EA5824B46DEDE34 /* Pods-ZLButton_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ZLButton_Tests.modulemap"; sourceTree = "<group>"; };
 		692D29656528FA94A71ECFB8FEB6DC0B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
@@ -145,19 +145,19 @@
 		7857E43C450A53C330A91D84406CDB6A /* UIImage+Compare.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+Compare.h"; path = "FBSnapshotTestCase/Categories/UIImage+Compare.h"; sourceTree = "<group>"; };
 		7D6B1B97A66F4F212611871B8CA61F66 /* UITextImageView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = UITextImageView.m; path = ZLPopView/Classes/UITextImageView.m; sourceTree = "<group>"; };
 		7DE796C75719A3C196838AA81F74ABDF /* ZLPopView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = ZLPopView.modulemap; sourceTree = "<group>"; };
-		7F053E914C57A22C719CE404834C4F06 /* ZLPopView-ZLPopView */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "ZLPopView-ZLPopView"; path = ZLPopView.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F053E914C57A22C719CE404834C4F06 /* ZLPopView.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZLPopView.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		8027FA56F78F8F18CFBCC471FD57DC2A /* ZLBaseConfigure.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ZLBaseConfigure.h; path = ZLPopView/Classes/include/ZLBaseConfigure.h; sourceTree = "<group>"; };
 		803AE44D13026A2948E05A711A657F58 /* ZLBaseConfigure.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ZLBaseConfigure.m; path = ZLPopView/Classes/ZLBaseConfigure.m; sourceTree = "<group>"; };
 		811FC8A3B902D59AC29807CADFEC1293 /* FBSnapshotTestCasePlatform.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSnapshotTestCasePlatform.m; path = FBSnapshotTestCase/FBSnapshotTestCasePlatform.m; sourceTree = "<group>"; };
-		89BDA31C6CFAB0DAD16381BE140FAB32 /* ZLButton */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ZLButton; path = ZLButton.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		89BDA31C6CFAB0DAD16381BE140FAB32 /* ZLButton.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ZLButton.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A2BA61D4552A8B597E5706EE43826F1 /* FBSnapshotTestCase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSnapshotTestCase.h; path = FBSnapshotTestCase/FBSnapshotTestCase.h; sourceTree = "<group>"; };
-		8E5E682F422D53463029A4D15A45F902 /* ZLButton.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = ZLButton.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		8E5E682F422D53463029A4D15A45F902 /* ZLButton.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = ZLButton.podspec; sourceTree = "<group>"; tabWidth = 2; };
 		922F0D52F71DBC889C1B2D0D97AADEAC /* UIApplication+StrictKeyWindow.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIApplication+StrictKeyWindow.h"; path = "FBSnapshotTestCase/Categories/UIApplication+StrictKeyWindow.h"; sourceTree = "<group>"; };
 		93535E9A584187E1200E522BDFBC5469 /* FBSnapshotTestController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSnapshotTestController.m; path = FBSnapshotTestCase/FBSnapshotTestController.m; sourceTree = "<group>"; };
 		93B0816F0EB0A73A16A7F1DDB952C45D /* FBSnapshotTestCase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FBSnapshotTestCase.debug.xcconfig; sourceTree = "<group>"; };
 		957903D7E5360BB9E58AE78C273BE7EA /* FBSnapshotTestCase.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSnapshotTestCase.m; path = FBSnapshotTestCase/FBSnapshotTestCase.m; sourceTree = "<group>"; };
 		9A904B1387971F222B7683DE8375CC23 /* UIImage+Diff.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Diff.m"; path = "FBSnapshotTestCase/Categories/UIImage+Diff.m"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9F39F541A51E2A8C620E93669003170C /* ZLButton.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = ZLButton.modulemap; sourceTree = "<group>"; };
 		A0540DD593EA635797626B6FD15EE751 /* Pods-ZLButton_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ZLButton_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		A460242FCF772C069652B74D94D601BC /* Pods-ZLButton_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ZLButton_Example-umbrella.h"; sourceTree = "<group>"; };
@@ -181,7 +181,7 @@
 		E68918B7DEDC5CF0B8BEB7BD26547156 /* ZLButton-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ZLButton-prefix.pch"; sourceTree = "<group>"; };
 		ECB903B9445423BB4A065D49DC1D1A06 /* ZLButton-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ZLButton-dummy.m"; sourceTree = "<group>"; };
 		EE690A21B0795BAC27A8B1989B728B9E /* Pods-ZLButton_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZLButton_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		EE838D4D7A974379DC91BBF47F44D21C /* Pods-ZLButton_Example */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-ZLButton_Example"; path = Pods_ZLButton_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE838D4D7A974379DC91BBF47F44D21C /* Pods_ZLButton_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZLButton_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F09D7C505C3E850EB228C4085D74EA26 /* UIImage+Snapshot.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+Snapshot.h"; path = "FBSnapshotTestCase/Categories/UIImage+Snapshot.h"; sourceTree = "<group>"; };
 		F27AFFF7AE765F2ED821EDB2D7AE6B80 /* ZLButton.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ZLButton.release.xcconfig; sourceTree = "<group>"; };
 		F2AB2C9A914C1BCEBFF4487A15AC90EE /* UITextImageView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = UITextImageView.h; path = ZLPopView/Classes/include/UITextImageView.h; sourceTree = "<group>"; };
@@ -339,12 +339,12 @@
 		8CFF0B79DCCF6A5FBAA6B1D40EA367D9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5C4F31330DFA99D699E4BDC8C3573D73 /* FBSnapshotTestCase */,
-				EE838D4D7A974379DC91BBF47F44D21C /* Pods-ZLButton_Example */,
-				36F8C33BD8F436DDEA1015104B336A47 /* Pods-ZLButton_Tests */,
-				89BDA31C6CFAB0DAD16381BE140FAB32 /* ZLButton */,
-				5CEEDBD9447D2F7F3F27005AE9CCB6F3 /* ZLPopView */,
-				7F053E914C57A22C719CE404834C4F06 /* ZLPopView-ZLPopView */,
+				5C4F31330DFA99D699E4BDC8C3573D73 /* FBSnapshotTestCase.framework */,
+				EE838D4D7A974379DC91BBF47F44D21C /* Pods_ZLButton_Example.framework */,
+				36F8C33BD8F436DDEA1015104B336A47 /* Pods_ZLButton_Tests.framework */,
+				89BDA31C6CFAB0DAD16381BE140FAB32 /* ZLButton.framework */,
+				5CEEDBD9447D2F7F3F27005AE9CCB6F3 /* ZLPopView.framework */,
+				7F053E914C57A22C719CE404834C4F06 /* ZLPopView.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -409,7 +409,6 @@
 				8EDA740CF937AC8A63CF93D941007F0C /* Support Files */,
 				8CAFB21858260CE237632CC3073429B4 /* SwiftSupport */,
 			);
-			name = FBSnapshotTestCase;
 			path = FBSnapshotTestCase;
 			sourceTree = "<group>";
 		};
@@ -490,7 +489,6 @@
 				2EE8DB6C2813FFC123FE2BD97625D6D2 /* Resources */,
 				BEBA318DF05596A204DB0C056F4EFDF6 /* Support Files */,
 			);
-			name = ZLPopView;
 			path = ZLPopView;
 			sourceTree = "<group>";
 		};
@@ -574,7 +572,7 @@
 			);
 			name = "Pods-ZLButton_Tests";
 			productName = Pods_ZLButton_Tests;
-			productReference = 36F8C33BD8F436DDEA1015104B336A47 /* Pods-ZLButton_Tests */;
+			productReference = 36F8C33BD8F436DDEA1015104B336A47 /* Pods_ZLButton_Tests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		95859848E760808DE123B5CB96EBF2D6 /* ZLPopView */ = {
@@ -593,7 +591,7 @@
 			);
 			name = ZLPopView;
 			productName = ZLPopView;
-			productReference = 5CEEDBD9447D2F7F3F27005AE9CCB6F3 /* ZLPopView */;
+			productReference = 5CEEDBD9447D2F7F3F27005AE9CCB6F3 /* ZLPopView.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		98A98149697C80CEF8D5772791E92E66 /* FBSnapshotTestCase */ = {
@@ -611,7 +609,7 @@
 			);
 			name = FBSnapshotTestCase;
 			productName = FBSnapshotTestCase;
-			productReference = 5C4F31330DFA99D699E4BDC8C3573D73 /* FBSnapshotTestCase */;
+			productReference = 5C4F31330DFA99D699E4BDC8C3573D73 /* FBSnapshotTestCase.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		B088AFB67C3A03E2D6D62BCE67B54F00 /* ZLButton */ = {
@@ -629,7 +627,7 @@
 			);
 			name = ZLButton;
 			productName = ZLButton;
-			productReference = 89BDA31C6CFAB0DAD16381BE140FAB32 /* ZLButton */;
+			productReference = 89BDA31C6CFAB0DAD16381BE140FAB32 /* ZLButton.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		EAA41A0AC2E49A761632627797FB5C20 /* ZLPopView-ZLPopView */ = {
@@ -646,7 +644,7 @@
 			);
 			name = "ZLPopView-ZLPopView";
 			productName = ZLPopView;
-			productReference = 7F053E914C57A22C719CE404834C4F06 /* ZLPopView-ZLPopView */;
+			productReference = 7F053E914C57A22C719CE404834C4F06 /* ZLPopView.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
 		F9598080DCB15131DCC902B5B2A772D1 /* Pods-ZLButton_Example */ = {
@@ -666,7 +664,7 @@
 			);
 			name = "Pods-ZLButton_Example";
 			productName = Pods_ZLButton_Example;
-			productReference = EE838D4D7A974379DC91BBF47F44D21C /* Pods-ZLButton_Example */;
+			productReference = EE838D4D7A974379DC91BBF47F44D21C /* Pods_ZLButton_Example.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -687,8 +685,6 @@
 				en,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			minimizedProjectReferenceProxies = 0;
-			preferredProjectObjectVersion = 77;
 			productRefGroup = 8CFF0B79DCCF6A5FBAA6B1D40EA367D9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -708,7 +704,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				14A4A20F4BFA4E486D538F109FD7171C /* ZLPopView-ZLPopView in Resources */,
+				14A4A20F4BFA4E486D538F109FD7171C /* ZLPopView.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1186,8 +1182,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
