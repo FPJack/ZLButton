@@ -63,9 +63,9 @@ typedef NS_ENUM(NSUInteger, ZLButtonContentAlignment) {
 
 /// 内容对齐方式（在交叉轴上），默认 Center
 @property (nonatomic, assign) ZLButtonContentAlignment layoutContentAlignment;
-- (instancetype)alignContentCenter; // 便捷方法，设置 layoutContentAlignment = Center
-- (instancetype)alignContentStart; // 便捷方法，设置 layoutContentAlignment = Start
-- (instancetype)alignContentEnd; // 便捷方法，设置 layoutContentAlignment
+- (instancetype)alignCenter; // 便捷方法，设置 layoutContentAlignment = Center
+- (instancetype)alignStart; // 便捷方法，设置 layoutContentAlignment = Start
+- (instancetype)alignEnd; // 便捷方法，设置 layoutContentAlignment
 
 /// 图文间距，默认 4
 @property (nonatomic, assign) CGFloat layoutSpacing;
@@ -119,7 +119,7 @@ typedef NS_ENUM(NSUInteger, ZLButtonContentAlignment) {
 
 /// 文字偏移量（在布局计算完成后额外偏移），正值向右/下，负值向左/上，纯视觉偏移，不影响 intrinsicContentSize
 @property (nonatomic, assign) UIOffset titleOffset;
-@property (nonatomic, copy, readonly) ZLButton* (^txtOffset)(CGFloat horizontal, CGFloat vertical);
+@property (nonatomic, copy, readonly) ZLButton* (^titOffset)(CGFloat horizontal, CGFloat vertical);
 
 /// 便捷设置点击事件，支持链式调用
 @property (nonatomic,copy)ZLButton* (^touchAction)(void (^action)(ZLButton * button));

@@ -300,15 +300,15 @@ static inline UIColor *__UIColorFromHexString(NSString *hexStr) {
 - (void)setLayoutContentAlignment:(ZLButtonContentAlignment)layoutContentAlignment {
     if (_layoutContentAlignment != layoutContentAlignment) { _layoutContentAlignment = layoutContentAlignment; [self setNeedsLayout]; }
 }
-- (instancetype)alignContentCenter {
+- (instancetype)alignCenter {
     self.layoutContentAlignment = ZLButtonContentAlignmentCenter;
     return self;
 }
-- (instancetype)alignContentStart {
+- (instancetype)alignStart {
     self.layoutContentAlignment = ZLButtonContentAlignmentStart;
     return self;
 }
-- (instancetype)alignContentEnd {
+- (instancetype)alignEnd {
     self.layoutContentAlignment = ZLButtonContentAlignmentEnd;
     return self;
 }
@@ -370,7 +370,7 @@ static inline UIColor *__UIColorFromHexString(NSString *hexStr) {
     [self setNeedsLayout];
 }
 
-- (ZLButton * _Nonnull (^)(CGFloat, CGFloat))txtOffset {
+- (ZLButton * _Nonnull (^)(CGFloat, CGFloat))titOffset {
     return ^(CGFloat horizontal, CGFloat vertical) {
         self.titleOffset = UIOffsetMake(horizontal, vertical);
         return self;

@@ -88,7 +88,7 @@
         btn.axis = ZLButtonAxisVertical;
         btn.layoutSpacing = 6;
         btn.imgOffset(-3, 0);
-        btn.txtOffset(0, 2);
+        btn.titOffset(0, 2);
         btn.layoutEdgeInsets = UIEdgeInsetsMake(12, 16, 12, 16);
         [self addButton:btn label:@"垂直 · imgOffset(-3,0) txtOffset(0,2)"];
     }
