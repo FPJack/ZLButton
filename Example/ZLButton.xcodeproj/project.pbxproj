@@ -304,10 +304,12 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-ZLButton_Example/Pods-ZLButton_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ZLButton/ZLButton.framework",
+				"${BUILT_PRODUCTS_DIR}/ZLPopView/ZLPopView.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ZLButton.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ZLPopView.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

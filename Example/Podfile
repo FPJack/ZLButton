@@ -4,7 +4,7 @@ platform :ios, '10.0'
 
 target 'ZLButton_Example' do
   pod 'ZLButton', :path => '../'
-
+  pod 'ZLPopView'
   target 'ZLButton_Tests' do
     inherit! :search_paths
 

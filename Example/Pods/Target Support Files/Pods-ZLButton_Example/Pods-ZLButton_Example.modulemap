@@ -1,0 +1,6 @@
+framework module Pods_ZLButton_Example {
+  umbrella header "Pods-ZLButton_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

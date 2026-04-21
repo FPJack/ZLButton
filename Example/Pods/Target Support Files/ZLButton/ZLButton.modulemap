@@ -1,0 +1,6 @@
+framework module ZLButton {
+  umbrella header "ZLButton-umbrella.h"
+
+  export *
+  module * { export * }
+}
