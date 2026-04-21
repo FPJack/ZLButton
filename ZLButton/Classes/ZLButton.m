@@ -383,6 +383,12 @@ static inline UIColor *__UIColorFromHexString(NSString *hexStr) {
         return self;
     };
 }
+- (ZLButton * _Nonnull (^)(id _Nonnull, SEL _Nonnull))addTargetSel {
+    return ^(id target, SEL action) {
+        [self addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
+        return self;
+    };
+}
 - (void)_zl_handleTouch {
     void (^action)(ZLButton *) = objc_getAssociatedObject(self, _cmd);
     if (action) action(self);

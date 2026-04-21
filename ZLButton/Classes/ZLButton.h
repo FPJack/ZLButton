@@ -123,6 +123,8 @@ typedef NS_ENUM(NSUInteger, ZLButtonContentAlignment) {
 
 /// 便捷设置点击事件，支持链式调用
 @property (nonatomic,copy)ZLButton* (^touchAction)(void (^action)(ZLButton * button));
+/// 便捷设置点击事件，支持链式调用，传入 target 和 action，内部会自动添加事件监听
+@property(nonatomic,readonly)ZLButton *(^addTargetSel)(id target, SEL action);
 
 /// 设置图片模式
 @property (nonatomic, copy, readonly) ZLButton* (^imageMode)(UIViewContentMode mode);
