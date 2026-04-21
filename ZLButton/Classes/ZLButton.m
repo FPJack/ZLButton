@@ -28,6 +28,8 @@ static inline UIColor *__UIColorFromHexString(NSString *hexStr) {
 @property (nonatomic,weak)UIImageView *imgView;
 @property (nonatomic,copy)NSNumber* isCircleClip;
 @property (nonatomic,assign)UIEdgeInsets cornerRadiiValue;
+@property (nonatomic,assign)BOOL imgTouchOnly;
+@property (nonatomic,assign)UIEdgeInsets touchAreaEdgeInsets;
 @end
 
 @implementation ZLButton
@@ -323,6 +325,18 @@ static inline UIColor *__UIColorFromHexString(NSString *hexStr) {
     self.layoutContentAlignment = ZLButtonContentAlignmentEnd;
     return self;
 }
+- (ZLButton * _Nonnull (^)(BOOL))imageTouchOnly {
+    return ^(BOOL imageOnly) {
+        self.imgTouchOnly = imageOnly;
+        return self;
+    };
+}
+- (ZLButton * _Nonnull (^)(CGFloat, CGFloat, CGFloat, CGFloat))touchAreaEdge {
+    return ^(CGFloat top, CGFloat leading, CGFloat bottom, CGFloat trailing) {
+        self.touchAreaEdgeInsets = UIEdgeInsetsMake(top, leading, bottom, trailing);
+        return self;
+    };
+}
 - (void)setLayoutSpacing:(CGFloat)layoutSpacing {
     if (_layoutSpacing != layoutSpacing) { _layoutSpacing = layoutSpacing; [self _zl_markDirty]; }
 }
@@ -347,7 +361,18 @@ static inline UIColor *__UIColorFromHexString(NSString *hexStr) {
         return self;
     };
 }
-
+- (ZLButton * _Nonnull (^)(CGFloat, CGFloat))insetsHor {
+    return ^(CGFloat leading, CGFloat trailing) {
+        self.layoutEdgeInsets = UIEdgeInsetsMake(self.layoutEdgeInsets.top, leading, self.layoutEdgeInsets.bottom, trailing);
+        return self;
+    };
+}
+- (ZLButton * _Nonnull (^)(CGFloat, CGFloat))insetsVer {
+    return ^(CGFloat top, CGFloat bottom) {
+        self.layoutEdgeInsets = UIEdgeInsetsMake(top, self.layoutEdgeInsets.left, bottom, self.layoutEdgeInsets.right);
+        return self;
+    };
+}
 - (void)setLayoutEdgeInsets:(UIEdgeInsets)layoutEdgeInsets {
     _layoutEdgeInsets = layoutEdgeInsets;
     [self _zl_markDirty];
@@ -887,6 +912,26 @@ static inline UIColor *__UIColorFromHexString(NSString *hexStr) {
         return self;
     };
 }
+
+- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {
+    if (!self.userInteractionEnabled ||
+        !self.enabled ||
+        self.hidden ||
+        self.alpha < 0.01) {
+        return [super pointInside:point withEvent:event];
+    }
+    UIEdgeInsets edget = self.touchAreaEdgeInsets;
+    CGRect expandedRect;
+    if (self.imgTouchOnly) {
+       expandedRect = UIEdgeInsetsInsetRect(self.imageView.bounds, UIEdgeInsetsMake(-edget.top, -edget.left, -edget.bottom, -edget.right));
+        // 将点转换到 imageView 的坐标系
+        CGPoint pointInImageView = [self convertPoint:point toView:self.imageView];
+        return CGRectContainsPoint(expandedRect, pointInImageView);
+    }
+    expandedRect = UIEdgeInsetsInsetRect(self.bounds, UIEdgeInsetsMake(-edget.top, -edget.left, -edget.bottom, -edget.right));
+    return CGRectContainsPoint(expandedRect, point);
+}
+
 - (void)dealloc
 {
     if (self.deallocBlock) self.deallocBlock(self);

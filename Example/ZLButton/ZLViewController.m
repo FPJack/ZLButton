@@ -59,6 +59,10 @@
         btn.layoutOrder = ZLButtonOrderImageFirst;
         btn.layoutSpacing = 8;
         btn.kfc.sizeWH(100, 70);
+        btn.imageTouchOnly(YES).touchAreaEdge(10, 10, 10, 10);
+        btn.touchAction(^(ZLButton * _Nonnull button) {
+           NSLog(@"按钮被点击了");
+        });
         [self addButton:btn label:@"水平 · 图片在左"];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             btn.titleLabel.preferredMaxLayoutWidth = 100;

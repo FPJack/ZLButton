@@ -67,19 +67,29 @@ typedef NS_ENUM(NSUInteger, ZLButtonContentAlignment) {
 - (instancetype)alignStart; // 便捷方法，设置 layoutContentAlignment = Start
 - (instancetype)alignEnd; // 便捷方法，设置 layoutContentAlignment
 
+
+///只接受图片点击
+@property (nonatomic, assign,readonly) ZLButton* (^imageTouchOnly)(BOOL imageTouchOnly);
+///扩大点击范围，正值扩大，负值缩小，纯视觉扩展，不影响布局
+@property (nonatomic, assign,readonly) ZLButton *(^touchAreaEdge)(CGFloat top, CGFloat leading, CGFloat bottom, CGFloat trailing);
+
 /// 图文间距，默认 4
 @property (nonatomic, assign) CGFloat layoutSpacing;
 
 @property (nonatomic, copy,readonly) ZLButton* (^spacing)(CGFloat spacing);// layoutSpacing 的别名，便捷设置
-
 /// 是否启用弹性间距（图文之间弹性撑满），默认 NO
 /// 启用后 layoutSpacing 作为最小间距
 @property (nonatomic, assign) BOOL flexibleSpacing;
 - (instancetype)flexSpacing; // 便捷方法，设置 flexibleSpacing = YES
 
+
+
 /// 内边距，默认 UIEdgeInsetsZero
 @property (nonatomic, assign) UIEdgeInsets layoutEdgeInsets;
 @property (nonatomic, copy,readonly) ZLButton* (^insets)(CGFloat top,CGFloat leading,CGFloat bottom,CGFloat trailing);// layoutEdgeInsets 的别名，便捷设置
+@property (nonatomic, copy,readonly) ZLButton* (^insetsHor)(CGFloat leading,CGFloat trailing);
+@property (nonatomic, copy,readonly) ZLButton* (^insetsVer)(CGFloat top,CGFloat bottom);
+
 
 /// 图片固定大小，默认 CGSizeZero 表示使用图片自身大小
 @property (nonatomic, assign) CGSize layoutImageSize;
@@ -127,7 +137,7 @@ typedef NS_ENUM(NSUInteger, ZLButtonContentAlignment) {
 @property (nonatomic, copy, readonly) ZLButton* (^titOffset)(CGFloat horizontal, CGFloat vertical);
 
 /// 便捷设置点击事件，支持链式调用
-@property (nonatomic,copy)ZLButton* (^touchAction)(void (^action)(ZLButton * button));
+@property (nonatomic,copy,readonly)ZLButton* (^touchAction)(void (^action)(ZLButton * button));
 /// 便捷设置点击事件，支持链式调用，传入 target 和 action，内部会自动添加事件监听
 @property(nonatomic,readonly)ZLButton *(^addTargetSel)(id target, SEL action);
 
