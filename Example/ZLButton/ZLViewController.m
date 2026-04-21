@@ -41,7 +41,6 @@
     self.stackView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.scrollView addSubview:self.stackView];
     
-    
     [NSLayoutConstraint activateConstraints:@[
         [self.stackView.topAnchor constraintEqualToAnchor:self.scrollView.contentLayoutGuide.topAnchor constant:20],
         [self.stackView.bottomAnchor constraintEqualToAnchor:self.scrollView.contentLayoutGuide.bottomAnchor constant:-20],
@@ -59,7 +58,6 @@
         btn.layoutOrder = ZLButtonOrderImageFirst;
         btn.layoutSpacing = 8;
         btn.kfc.sizeWH(100, 70);
-        btn.imageTouchOnly(YES).touchAreaEdge(10, 10, 10, 10);
         btn.touchAction(^(ZLButton * _Nonnull button) {
            NSLog(@"按钮被点击了");
         });

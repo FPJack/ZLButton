@@ -73,6 +73,10 @@ typedef NS_ENUM(NSUInteger, ZLButtonContentAlignment) {
 ///扩大点击范围，正值扩大，负值缩小，纯视觉扩展，不影响布局
 @property (nonatomic, assign,readonly) ZLButton *(^touchAreaEdge)(CGFloat top, CGFloat leading, CGFloat bottom, CGFloat trailing);
 
+/// 防止按钮被频繁点击，单位秒，默认0不限制
+@property (nonatomic, readonly) ZLButton* (^debounce)(NSTimeInterval interval);
+
+
 /// 图文间距，默认 4
 @property (nonatomic, assign) CGFloat layoutSpacing;
 
@@ -119,6 +123,7 @@ typedef NS_ENUM(NSUInteger, ZLButtonContentAlignment) {
 /// 便捷设置字体颜色（设置 Normal 状态）
 @property (nonatomic, strong, nullable) UIColor *layoutTitleColor;
 @property (nonatomic, copy,readonly) ZLButton* (^titleColor)(id color);// layoutTitleColor 的别名，便捷设置 UIColor 或 UIColorHex
+
 ///设置选中文字颜色
 @property (nonatomic, copy, readonly) ZLButton* (^selectTitleColor)(id color);
 ///设置文字换行最大宽度
@@ -208,7 +213,7 @@ typedef NS_ENUM(NSUInteger, ZLButtonContentAlignment) {
 
 
 @interface UIView (ZLButton)
-@property (nonatomic,readonly)ZLButton *imgTextBtn;
+@property (nonatomic, readonly) ZLButton *imgTextBtn;
 @end
 
 

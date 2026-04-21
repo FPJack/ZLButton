@@ -30,6 +30,8 @@ static inline UIColor *__UIColorFromHexString(NSString *hexStr) {
 @property (nonatomic,assign)UIEdgeInsets cornerRadiiValue;
 @property (nonatomic,assign)BOOL imgTouchOnly;
 @property (nonatomic,assign)UIEdgeInsets touchAreaEdgeInsets;
+@property (nonatomic,assign)CGFloat tapInerval;
+
 @end
 
 @implementation ZLButton
@@ -336,6 +338,22 @@ static inline UIColor *__UIColorFromHexString(NSString *hexStr) {
         self.touchAreaEdgeInsets = UIEdgeInsetsMake(top, leading, bottom, trailing);
         return self;
     };
+}
+
+- (ZLButton * _Nonnull (^)(NSTimeInterval))debounce {
+    return ^(NSTimeInterval interval) {
+        self.tapInerval = interval;
+        return self;
+    };
+}
+- (void)sendAction:(SEL)action to:(id)target forEvent:(UIEvent *)event {
+    if (self.tapInerval > 0) {
+        self.userInteractionEnabled = NO;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(self.tapInerval * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            self.userInteractionEnabled = YES;
+        });
+    }
+    [super sendAction:action to:target forEvent:event];
 }
 - (void)setLayoutSpacing:(CGFloat)layoutSpacing {
     if (_layoutSpacing != layoutSpacing) { _layoutSpacing = layoutSpacing; [self _zl_markDirty]; }
@@ -921,6 +939,11 @@ static inline UIColor *__UIColorFromHexString(NSString *hexStr) {
         return [super pointInside:point withEvent:event];
     }
     UIEdgeInsets edget = self.touchAreaEdgeInsets;
+    if ([self _zl_isRTL]) {
+        CGFloat tmp = edget.left;
+        edget.left = edget.right;
+        edget.right = tmp;
+    }
     CGRect expandedRect;
     if (self.imgTouchOnly) {
        expandedRect = UIEdgeInsetsInsetRect(self.imageView.bounds, UIEdgeInsetsMake(-edget.top, -edget.left, -edget.bottom, -edget.right));
