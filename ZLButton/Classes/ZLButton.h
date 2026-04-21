@@ -91,6 +91,11 @@ typedef NS_ENUM(NSUInteger, ZLButtonContentAlignment) {
 ///选中图片
 @property (nonatomic, copy, readonly)ZLButton* (^selectImage)(id image);// 便捷设置选中状态图片，支持 UIImage 或 UIImageName
 /// 便捷设置标题（设置 Normal 状态）
+
+@property (nonatomic, copy,readonly) ZLButton* (^bgImage)(id image);// 背景图片布局，支持 UIImage 或 UIImageName Normal状态
+@property (nonatomic, copy, readonly)ZLButton* (^selectBgImage)(id image);// 选中状态背景图片布局，支持 UIImage 或 UIImageName s
+
+
 @property (nonatomic, copy, nullable) NSString *layoutTitle;
 @property (nonatomic, copy,readonly) ZLButton* (^title)(NSString *title);// layoutTitle 的别名，便捷设置
 @property (nonatomic, copy, readonly)ZLButton* (^selectTitle)(NSString* title);

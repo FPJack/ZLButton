@@ -137,27 +137,25 @@ static inline UIColor *__UIColorFromHexString(NSString *hexStr) {
     [self setImage:layoutImage forState:UIControlStateNormal];
     [self _zl_markDirty];
 }
+- (UIImage *)imageWithObj:(id)image {
+    UIImage *img = nil;
+    if ([img isKindOfClass:UIImage.class]) {
+        img = image;
+    } else if ([img isKindOfClass:NSString.class]) {
+        img = [UIImage imageNamed:image];
+    }
+    return img;
+}
 - (ZLButton * _Nonnull (^)(id _Nonnull))image {
     return ^(id img) {
-        if ([img isKindOfClass:UIImage.class]) {
-            self.layoutImage = img;
-        } else if ([img isKindOfClass:NSString.class]) {
-            self.layoutImage = [UIImage imageNamed:img];
-        }else {
-            self.layoutImage = nil;
-        }
+        self.layoutImage = [self imageWithObj:img];
         return self;
     };
 }
 - (ZLButton * _Nonnull (^)(id _Nonnull))selectImage {
     return ^(id img) {
-        if ([img isKindOfClass:UIImage.class]) {
-            [self setImage:img forState:UIControlStateSelected];
-        } else if ([img isKindOfClass:NSString.class]) {
-            [self setImage:[UIImage imageNamed:img] forState:UIControlStateSelected];
-        }else {
-            [self setImage:nil forState:UIControlStateSelected];
-        }
+        [self setImage:[self imageWithObj:img] forState:UIControlStateSelected];
+
         [self _zl_markDirty];
         return self;
     };
@@ -165,7 +163,19 @@ static inline UIColor *__UIColorFromHexString(NSString *hexStr) {
 - (UIImage *)layoutImage {
     return [self imageForState:UIControlStateNormal];
 }
-
+- (ZLButton * _Nonnull (^)(id _Nonnull))bgImage {
+    return ^(id img) {
+        [self setBackgroundImage:[self imageWithObj:img] forState:UIControlStateNormal];
+        return self;
+    };
+}
+- (ZLButton * _Nonnull (^)(id _Nonnull))selectBgImage {
+    return ^(id img) {
+        [self setBackgroundImage:[self imageWithObj:img] forState:UIControlStateSelected];
+        [self _zl_markDirty];
+        return self;
+    };
+}
 - (void)setLayoutTitle:(NSString *)layoutTitle {
     [self setTitle:layoutTitle forState:UIControlStateNormal];
     [self _zl_markDirty];
