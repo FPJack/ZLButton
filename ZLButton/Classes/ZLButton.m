@@ -31,7 +31,8 @@ static inline UIColor *__UIColorFromHexString(NSString *hexStr) {
 @property (nonatomic,assign)BOOL imgTouchOnly;
 @property (nonatomic,assign)UIEdgeInsets touchAreaEdgeInsets;
 @property (nonatomic,assign)CGFloat tapInerval;
-
+@property (nonatomic,copy)void (^activeStyleBlock)(ZLButton *);
+@property (nonatomic,copy)void (^inactiveStyleBlock)(ZLButton *);
 @end
 
 @implementation ZLButton
@@ -551,17 +552,16 @@ static inline UIColor *__UIColorFromHexString(NSString *hexStr) {
     [super layoutSubviews];
     
     /// 确保渐变层在最底层且尺寸正确
-    if (!_gradLayer
+    if (_gradLayer
         && !CGRectEqualToRect(self.bounds, CGRectZero)
         && !CGRectEqualToRect(self.bounds, self.gradLayer.bounds)) {
         [self.layer insertSublayer:self.gradLayer atIndex:0];
         self.gradLayer.frame = self.bounds;
     }
     
-    if (self.isCircleClip) self.circleClip(self.isCircleClip);
+    if (self.isCircleClip) self.circle(self.isCircleClip);
     // 始终重新计算，确保动态修改内容后布局正确
     [self _zl_doRecalculate];
-
     CGRect bounds = self.bounds;
     UIEdgeInsets insets = [self _zl_effectiveInsets];
     CGRect contentRect = CGRectMake(insets.left, insets.top,
@@ -737,6 +737,10 @@ static inline UIColor *__UIColorFromHexString(NSString *hexStr) {
     self.imageView.contentMode = UIViewContentModeScaleAspectFit;
     return self;
 }
+- (instancetype)imageModeScaleAspectFill {
+    self.imageView.contentMode = UIViewContentModeScaleAspectFill;
+    return self;
+}
 - (ZLButton * _Nonnull (^)(UIViewContentMode))bgImageMode {
     return ^(UIViewContentMode mode) {
         self.contentMode = mode;
@@ -747,9 +751,18 @@ static inline UIColor *__UIColorFromHexString(NSString *hexStr) {
     self.contentMode = UIViewContentModeScaleAspectFit;
     return self;
 }
-- (ZLButton * _Nonnull (^)(BOOL))userInteraction {
+- (instancetype)bgImageModeScaleAspectFill {
+    self.contentMode = UIViewContentModeScaleAspectFill;
+    return self;
+}
+- (ZLButton * _Nonnull (^)(BOOL))userActive {
     return ^(BOOL enabled) {
         self.userInteractionEnabled = enabled;
+        if (enabled) {
+            if (self.activeStyleBlock) self.activeStyleBlock(self);
+        }else  {
+            if (self.inactiveStyleBlock) self.inactiveStyleBlock(self);
+        }
         return self;
     };
 }
@@ -759,7 +772,7 @@ static inline UIColor *__UIColorFromHexString(NSString *hexStr) {
         return self;
     };
 }
-- (ZLButton * _Nonnull (^)(CGFloat))cornerRadius {
+- (ZLButton * _Nonnull (^)(CGFloat))corner {
     return ^ZLButton*(CGFloat radius){
         self.layer.cornerRadius = radius;
         self.layer.masksToBounds = radius > 0;
@@ -804,7 +817,7 @@ static inline UIColor *__UIColorFromHexString(NSString *hexStr) {
     maskLayer.path = path.CGPath;
     self.layer.mask = maskLayer;
 }
-- (ZLButton * _Nonnull (^)(BOOL))circleClip {
+- (ZLButton * _Nonnull (^)(BOOL))circle {
     return ^ZLButton*(BOOL clip) {
         self.isCircleClip = @(clip);
         if (clip) {
@@ -818,7 +831,7 @@ static inline UIColor *__UIColorFromHexString(NSString *hexStr) {
         return self;
     };
 }
-- (ZLButton * _Nonnull (^)(CGFloat))imageCornerRadius {
+- (ZLButton * _Nonnull (^)(CGFloat))imageCorner {
     return ^ZLButton*(CGFloat radius){
         self.imageView.layer.cornerRadius = radius;
         self.imageView.layer.masksToBounds = radius > 0;
@@ -838,30 +851,30 @@ static inline UIColor *__UIColorFromHexString(NSString *hexStr) {
     };
 }
 
-- (ZLButton*  _Nonnull (^)(id _Nonnull))shadowColor {
+- (ZLButton*  _Nonnull (^)(id _Nonnull))shColor {
     return ^ZLButton* (id color) {
         self.layer.shadowColor = [self colorWithObj:color].CGColor;
-        return self.shadowOffset(0,2);
+        return self.shOffset(0,2);
     };
 }
 
 
-- (ZLButton*  _Nonnull (^)(CGFloat, CGFloat))shadowOffset {
+- (ZLButton*  _Nonnull (^)(CGFloat, CGFloat))shOffset {
     return ^ZLButton* (CGFloat width, CGFloat height) {
         self.layer.shadowOffset = CGSizeMake(width, height);
-        return self.shadowRadius(6);
+        return self.shRadius(6);
     };
 }
 
 
-- (ZLButton*  _Nonnull (^)(CGFloat))shadowRadius {
+- (ZLButton*  _Nonnull (^)(CGFloat))shRadius {
     return ^ZLButton* (CGFloat radius) {
         self.layer.shadowRadius = radius;
-        return self.shadowOpacity(0.2);
+        return self.shOpacity(0.2);
     };
 }
 
-- (ZLButton*  _Nonnull (^)(CGFloat))shadowOpacity {
+- (ZLButton*  _Nonnull (^)(CGFloat))shOpacity {
     return ^ZLButton* (CGFloat opacity) {
         self.layer.shadowOpacity = opacity;
         return self.masksToBounds(NO);
@@ -954,20 +967,28 @@ static inline UIColor *__UIColorFromHexString(NSString *hexStr) {
     expandedRect = UIEdgeInsetsInsetRect(self.bounds, UIEdgeInsetsMake(-edget.top, -edget.left, -edget.bottom, -edget.right));
     return CGRectContainsPoint(expandedRect, point);
 }
-
+- (ZLButton* (^)(void (^ _Nonnull)(ZLButton * _Nonnull)))activeStyle {
+    return ^(void (^block)(ZLButton *)) {
+        self.activeStyleBlock = block;
+        if (self.userInteractionEnabled) if (block) block(self);
+        return self;
+    };
+}
+- (ZLButton* (^)(void (^ _Nonnull)(ZLButton * _Nonnull)))inactiveStyle {
+    return ^(void (^block)(ZLButton *)) {
+        self.inactiveStyleBlock = block;
+        if (!self.userInteractionEnabled) if (block) block(self);
+        return self;
+    };
+}
+- (ZLButton * _Nonnull (^)(void (^ _Nonnull)(ZLButton * _Nonnull)))then {
+    return ^(void (^block)(ZLButton *)) {
+        if (block) block(self);
+        return self;
+    };
+}
 - (void)dealloc
 {
     if (self.deallocBlock) self.deallocBlock(self);
-}
-@end
-@implementation UIView (ZLButton)
-- (ZLButton *)imgTextBtn {
-    ZLButton *button = objc_getAssociatedObject(self, _cmd);
-    if (!button) {
-        button = ZLButton.horizontal;
-        [self addSubview:button];
-        objc_setAssociatedObject(self, _cmd, button, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    }
-    return button;
 }
 @end

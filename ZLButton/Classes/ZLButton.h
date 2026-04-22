@@ -8,7 +8,10 @@
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
-
+//图片文字水平
+#define ZLBtnH [ZLButton horizontal]
+//图片文字垂直
+#define ZLBtnV [ZLButton vertical]
 /// 图片与文字的排列方向
 typedef NS_ENUM(NSUInteger, ZLButtonAxis) {
     ZLButtonAxisHorizontal = 0,  // 水平排列
@@ -123,7 +126,6 @@ typedef NS_ENUM(NSUInteger, ZLButtonContentAlignment) {
 /// 便捷设置字体颜色（设置 Normal 状态）
 @property (nonatomic, strong, nullable) UIColor *layoutTitleColor;
 @property (nonatomic, copy,readonly) ZLButton* (^titleColor)(id color);// layoutTitleColor 的别名，便捷设置 UIColor 或 UIColorHex
-
 ///设置选中文字颜色
 @property (nonatomic, copy, readonly) ZLButton* (^selectTitleColor)(id color);
 ///设置文字换行最大宽度
@@ -150,41 +152,45 @@ typedef NS_ENUM(NSUInteger, ZLButtonContentAlignment) {
 @property (nonatomic, copy, readonly) ZLButton* (^imageMode)(UIViewContentMode mode);
 ///UIViewContentModeScaleAspectFit
 - (instancetype)imageModeScaleAspectFit;
+- (instancetype)imageModeScaleAspectFill;
+
 
 ///设置背景图片填充模式
 @property (nonatomic, copy, readonly) ZLButton* (^bgImageMode)(UIViewContentMode mode);
 - (instancetype)bgImageModeScaleAspectFit;
+- (instancetype)bgImageModeScaleAspectFill;
+
 
 ///设置是否可见
 @property (nonatomic, copy, readonly) ZLButton* (^visibility)(BOOL visible);
 ///设置透明度
 @property (nonatomic, copy, readonly) ZLButton* (^alphaValue)(CGFloat alpha);
 ///设置userinteractionEnabled
-@property (nonatomic, copy, readonly) ZLButton* (^userInteraction)(BOOL userInteraction);
+@property (nonatomic, copy, readonly) ZLButton* (^userActive)(BOOL userInteractionEnabled);
 ///设置选中
 @property (nonatomic, copy, readonly) ZLButton* (^select)(BOOL select);
 ///设置圆角
-@property (nonatomic, copy, readonly) ZLButton* (^cornerRadius)(CGFloat radius);
+@property (nonatomic, copy, readonly) ZLButton* (^corner)(CGFloat radius);
 
 ///设置4个方向的圆角，传入不同的值
 @property (nonatomic, copy, readonly) ZLButton* (^cornerRadii)(CGFloat topLeft, CGFloat topRight, CGFloat bottomLeft, CGFloat bottomRight);
 
 ///设置是否圆形裁剪
-@property (nonatomic, copy, readonly) ZLButton* (^circleClip)(BOOL circleClip);
+@property (nonatomic, copy, readonly) ZLButton* (^circle)(BOOL circleClip);
 
 ///设置图片圆角
-@property (nonatomic, copy, readonly) ZLButton* (^imageCornerRadius)(CGFloat radius);
+@property (nonatomic, copy, readonly) ZLButton* (^imageCorner)(CGFloat radius);
 
 ///UIColor or #333333
 @property (nonatomic,readonly) ZLButton* (^borderColor)(id);
 @property (nonatomic,readonly) ZLButton* (^borderWidth)(CGFloat);
-@property (nonatomic,readonly) ZLButton* (^shadowColor)(id color);
+@property (nonatomic,readonly) ZLButton* (^shColor)(id color);
 //默认 （0,2）
-@property (nonatomic,readonly) ZLButton* (^shadowOffset)(CGFloat width,CGFloat height);
+@property (nonatomic,readonly) ZLButton* (^shOffset)(CGFloat width,CGFloat height);
 //默认0.2
-@property (nonatomic,readonly) ZLButton* (^shadowOpacity)(CGFloat opacity);
+@property (nonatomic,readonly) ZLButton* (^shOpacity)(CGFloat opacity);
 //默认6
-@property (nonatomic,readonly) ZLButton* (^shadowRadius)(CGFloat radius);
+@property (nonatomic,readonly) ZLButton* (^shRadius)(CGFloat radius);
 @property (nonatomic,readonly) ZLButton* (^masksToBounds)(BOOL masksToBounds);
 ///渐变层，外部可直接访问进行配置，例如设置渐变颜色、方向
 @property (nonatomic,strong)CAGradientLayer *gradLayer;
@@ -199,8 +205,6 @@ typedef NS_ENUM(NSUInteger, ZLButtonContentAlignment) {
 @property (nonatomic, copy, readonly) ZLButton* (^edgeTo)(CGFloat top,CGFloat leading, CGFloat bottom, CGFloat trailing);
 ///贴紧父视图四边布局
 @property (nonatomic, copy, readonly) ZLButton* (^edgeZero)(void);
-
-
 ///赋值当前对象到一个指针上
 /// 例如：ZLButton *btn;
 ///  ZLButton.new.assignToPtr(&btn);
@@ -209,12 +213,13 @@ typedef NS_ENUM(NSUInteger, ZLButtonContentAlignment) {
 @property (nonatomic, copy) void (^layoutBlock)(ZLButton * button);
 ///dealloc回调
 @property (nonatomic, copy) void (^deallocBlock)(ZLButton * button);
+///可点击情况下进行相应配置 userActive(YES) 触发回调
+@property (nonatomic, copy,readonly) ZLButton* (^activeStyle)(void (^)(ZLButton * button));
+///不可点击情况下配置userActive(NO) 触发回调
+@property (nonatomic, copy,readonly) ZLButton* (^inactiveStyle)(void (^)(ZLButton * button));
+///立即触发block回调，适用于需要在初始化时立即配置样式的场景
+@property (nonatomic,readonly) ZLButton* (^then)(void (^)(ZLButton * button));
+
 @end
-
-
-@interface UIView (ZLButton)
-@property (nonatomic, readonly) ZLButton *imgTextBtn;
-@end
-
 
 NS_ASSUME_NONNULL_END
